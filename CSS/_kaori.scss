@@ -1,0 +1,1031 @@
+@use './common' as *;
+
+
+
+
+/*===========================
+コンタクトページ
+===========================*/
+
+.next-event {
+  margin-top: 200px;
+  margin-bottom: 120px;
+
+  .section__title {
+    text-align: left;
+    max-width: 870px;
+    margin: 0 auto;
+    margin-bottom: 120px;
+
+    h2 {
+      font-family: $font-en;
+      font-size: 12.8rem;
+      color: $color-main;
+      
+    }
+
+    p {
+      color: $color-blue;
+      font-weight: bold;
+      font-size: 3.6rem;
+    }
+  }
+
+  &__content {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 10px solid $color-main;
+    padding: 30px 100px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+
+    &--text {
+      width: 65%;
+      color: $color-main;
+      font-size: 2.4rem;
+      font-weight: bold;
+
+      .dl-wrap {
+        display: flex;
+        margin-bottom: 20px ;
+      }
+    }
+  }
+
+  &__img-wrap {
+    position: relative;
+    display: inline-block;
+    width: 45%;
+
+    .pin {
+      position: absolute;
+      width: 100px; 
+      top: 60%; 
+      left: 48%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+
+      &.show {
+        opacity: 1;
+        animation: bounce-in 1s ease forwards;
+      }
+
+      @keyframes bounce-in {
+        0% {
+          transform: translate(-50%, -50%) scale(0.5);
+          opacity: 0;
+        }
+        50% {
+          transform: translate(-50%, -55%) scale(1.2);
+          opacity: 1;
+        }
+        70% {
+          transform: translate(-50%, -48%) scale(0.9);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    }
+  }
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 120px;
+}
+
+.btn-right a{
+  grid-column: 2;
+}
+
+.submit {
+  width: 75% !important;
+  margin-top: 40px;
+}
+
+
+/*===========================
+コンタクトフォーム
+===========================*/
+.contact {
+    max-width: 670px;
+    margin: 0 auto 140px auto;
+    padding: 0 20px;
+
+  &__title {
+    font-family: $font-en;
+    color: $color-main;
+    font-size: 6.4rem;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  &__wrap {
+    display: flex;
+    margin-bottom: 25px;
+
+    label {
+      color: $color-blue;
+      font-size: 2rem;
+      font-weight: bold;
+      width: 35%;
+    }
+
+    input,textarea {
+      border: 3px solid $color-blue;
+      border-radius: 10px;
+      width: 65%;
+      padding: 10px;
+    }
+  }
+
+  .checkbox {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    font-size: 1.2rem;
+
+    p {
+      span {
+        color: #707070;
+        border-bottom: 1px solid #707070;
+      }
+    }
+  }
+
+  .submit {
+    margin: 40px auto 0 auto;
+  }
+}
+
+プレースホルダーの色を変更するには、CSSの ::placeholder 疑似要素を使用します。以下はプレースホルダーの色を変更するためのCSSコードです：
+css/* すべての入力フィールドのプレースホルダー色を変更 */
+::placeholder {
+  color: #000; /* 希望の色に変更 */
+  opacity: 1; /* 一部のブラウザでは透明度も設定する必要があります */
+}
+
+/* ブラウザ互換性のために、各ベンダープレフィックスも追加 */
+::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+  color: #000;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #000;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #000;
+}
+
+/*===========================
+送信完了
+===========================*/
+.form-complete-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  &.is-visible {
+    display: flex;
+    opacity: 1;
+  }
+
+  &__content {
+    background-color: $color-base;
+    color: $color-main;
+    padding: 40px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 2.4rem;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+
+    // モーダルが表示されたとき拡大
+    .form-complete-modal.is-visible & {
+      transform: scale(1);
+    }
+  }
+
+  &__close {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: $color-blue;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.8rem;
+  }
+}
+
+
+
+/*===========================
+ギャラリーページFV
+===========================*/
+.gallery__fv {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 画面いっぱい */
+  overflow: hidden;
+
+  &--images {
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+    top: 60%;
+    // transform: translateY(-50%);
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      aspect-ratio: 3/4;
+      opacity: 0;
+      object-fit: cover;
+      
+    }
+
+    .img1 {
+      animation: fadeInOverlapRight1 1s ease forwards;
+      animation-delay: 0s;
+    }
+    .img2 {
+      animation: fadeInOverlapLeft2 1s ease forwards;
+      animation-delay: 0.8s;
+    }
+    .img3 {
+      animation: fadeInOverlapRight3 1s ease forwards;
+      animation-delay: 1.6s;
+    }
+    .img4 {
+      animation: fadeInOverlapLeft4 1s ease forwards;
+      animation-delay: 2.4s;
+    }
+    .img5 {
+      animation: fadeInOverlapRight5 1s ease forwards;
+      animation-delay: 3.2s;
+    }
+
+    @keyframes fadeInOverlapRight1 {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -70%) scale(0.95) rotate(10deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -65%) scale(1) rotate(0deg);
+      }
+    }
+    
+    @keyframes fadeInOverlapLeft2 {
+      0% {
+        opacity: 0;
+        transform: translate(-47%, -65%) scale(0.95) rotate(-8deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-47%, -58%) scale(1) rotate(0deg);
+      }
+    }
+    
+    @keyframes fadeInOverlapRight3 {
+      0% {
+        opacity: 0;
+        transform: translate(-53%, -68%) scale(0.95) rotate(12deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-53%, -62%) scale(1) rotate(0deg);
+      }
+    }
+    
+    @keyframes fadeInOverlapLeft4 {
+      0% {
+        opacity: 0;
+        transform: translate(-45%, -60%) scale(0.95) rotate(-15deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-45%, -55%) scale(1) rotate(0deg);
+      }
+    }
+    
+    @keyframes fadeInOverlapRight5 {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -65%) scale(0.95) rotate(5deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -60%) scale(1) rotate(0deg);
+      }
+    }
+    
+  }
+
+  .gallery__fv--title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14rem;
+    font-family: $font-en;
+    color: $color-main;
+    opacity: 0;
+    animation: fadeInTitle 1s ease forwards;
+    animation-delay: 4s; /* 画像アニメーションが全部終わってから */
+  }
+  
+  @keyframes fadeInTitle {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -55%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+}
+
+
+
+/*===========================
+ボタン
+===========================*/
+
+// カラーパレット
+$colors: (
+  'default': (
+    background: $color-base,
+    btn-bg: $color-main,
+    hover-bg: $color-blue,
+    icon: $color-main,
+    text: $color-base,
+  ),
+  'blue': (
+    background: $color-base,
+    btn-bg: $color-blue,
+    hover-bg: $color-main,
+    icon: $color-blue,
+    text: $color-base,
+  ),
+  'green': (
+    background: $color-base,
+    btn-bg: $color-green,
+    hover-bg: $color-brown,
+    icon: $color-green,
+    text: $color-base,
+  ),
+  'link-orange': (
+    background: $color-main,
+    btn-bg: $color-base,
+    hover-bg: $color-main,
+    hover-text:$color-base,
+    icon: $color-base,
+    text: $color-main,
+  ),
+  'link-blue': (
+    background: $color-blue,
+    btn-bg: $color-base,
+    hover-bg: $color-blue,
+    hover-text:$color-base,
+    icon: $color-base,
+    text: $color-blue,
+  ),
+  'link-green': (
+    background: $color-green,
+    btn-bg: $color-base,
+    hover-bg: $color-green,
+    hover-text:$color-base,
+    icon: $color-base,
+    text: $color-green,
+  )
+);
+
+// ボタンコンポーネントのミックスイン
+@mixin switch-link-base() {
+  position: relative;
+  // display: inline-block;
+  display: block;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 18px 20px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+@mixin switch-link-circle() {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 15px;
+      height: 10px;
+    }
+  }
+}
+
+@mixin switch-link-label() {
+  position: relative;
+  display: block;
+  height: 25px;
+  overflow: hidden;
+  padding-left: 40px;
+
+  span {
+    position: absolute;
+    left: 40px;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+
+    &:first-child {
+      transform: translateY(0);
+    }
+
+    &:last-child {
+      transform: translateY(100%);
+    }
+  }
+}
+
+// カラーテーマのミックスイン
+@mixin switch-link-theme($theme-name: 'default') {
+  $theme-colors: map-get($colors, $theme-name);
+
+  color: map-get($theme-colors, text);
+  border: 3px solid map-get($theme-colors, border);
+  background-color: map-get($theme-colors, btn-bg);
+
+  &:hover {
+    background-color: map-get($theme-colors, hover-bg);
+    color: map-get($theme-colors, hover-text);
+  }
+
+  .c-switch-link__circle {
+    background-color: map-get($theme-colors, background);
+
+    &-icon svg {
+      fill: map-get($theme-colors, icon);
+    }
+  }
+}
+
+// ベースのリセットスタイル
+.button-container {     
+  width: 100%;
+  max-width: 250px;
+  padding: 20px 0;
+  display: block;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+// ボタンスタイル
+.c-switch-link {
+
+  @include switch-link-base();
+
+  &__circle {
+    @include switch-link-circle();
+  }
+
+  &__label {
+    @include switch-link-label();
+  }
+
+  // ホバー時のアニメーション
+  &:hover {
+    .c-switch-link__label span {
+      &:first-child {
+        transform: translateY(-100%);
+      }
+
+      &:last-child {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // テーマのバリエーション
+  &.-default {
+    @include switch-link-theme('default');
+  }
+
+  &.-blue {
+    @include switch-link-theme('blue');
+  }
+
+  &.-green {
+    @include switch-link-theme('green');
+  }
+
+  &.-baseorange {
+    @include switch-link-theme('link-orange');
+  }
+
+  &.-baseblue {
+    @include switch-link-theme('link-blue');
+  }
+
+  &.-basegreen {
+    @include switch-link-theme('link-green');
+  }
+}
+
+.en {
+  font-family: $font-en;
+  line-height: 1.5;
+}
+
+/*===========================
+スケジュールページ
+===========================*/
+
+.html, .body {
+  overflow-x: hidden !important;
+  width: 100%;
+  position: relative;
+}
+
+.schedule {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  width: max-content;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  &__horizontal {
+    display: flex;
+    height: 100vh;
+
+    &.pin-spacer {
+      width: 100vw !important;
+      max-width: 100vw !important;
+      height: 100vh !important;
+      box-sizing: border-box !important;
+      padding: 0 !important;
+    }
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  &__content {
+    flex: 0 0 100vw;
+    height: 100vh;
+    position: relative;
+
+    .schedule__title {
+      font-size: 9.6rem;
+    }
+
+    .schedule__time {
+      position: absolute;
+      top: 20%;
+      left: 15%;
+      font-family: $font-en;
+      font-size: 6.4rem;
+      z-index: 100;
+      text-shadow: 4px 0 3px rgba(237, 230, 215, 1);
+
+      &.orange {
+        color: $color-main;
+      }
+
+      &.blue {
+        color: $color-blue;
+      }
+    }
+
+    h2 {
+      font-family: $font-en;
+      font-size: 6.4rem; 
+      text-shadow: 4px 0 3px rgba(237, 230, 215, 1);
+      margin-bottom: 20px;
+    }
+
+    .schedule__text {
+      position: absolute;
+      z-index: 10;
+
+      p {
+        font-weight: bold;
+        font-size: 2.4rem;
+        text-shadow: 1px 0 2px rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    img {
+      position: absolute;
+    }
+
+    &.schedule__top {
+      position: relative;
+      overflow: hidden;
+      width: 100vw;
+      max-width: 100vw;
+
+      h2 {
+        position: absolute;
+        bottom: 10%;
+        left: 10%;
+        z-index: 10;
+        color: $color-main;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40%;
+        height: 100vh;
+        transition: width 0.5s ease;
+        transform-origin: right center;
+      }
+    }
+
+    &.opening {
+      .schedule__text {
+        top: 50%;
+        left: 25%;
+        transform: translateY(-50%);
+        color: $color-main;
+        width: 35%;
+      }
+
+      img {
+        top: 0;
+        right: 15%;
+        width: 40%;
+        height: 100%;
+      }
+    }
+
+    &.seminar {
+      .schedule__text {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        color: $color-main;
+        width: 35%;
+        z-index: 1;
+      }
+
+      img {
+        top: 15%;
+        right: 20%;
+        width: 30%;
+        height: 70%;
+      }
+    }
+
+    &.talkshow {
+      .img__wrap {
+        
+        img {
+          width: 30%;
+          height: 70%;
+          top: 20%;
+          left: 25%;
+        }
+      }
+      
+      .schedule__text {
+        color: $color-main;
+        top: 40%;
+        right: 15%;
+      }
+    }
+
+    &.award {
+      .schedule__text {
+        color: $color-main;
+        left: 15%;
+        top: 40%;
+      }
+      
+      img {
+        bottom: 2%;
+        right: 10%;
+        width: 35%;
+        height: 60%;
+      }
+    }
+
+    &.group {
+      h2 {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+
+      .img__wrap {
+
+        img {
+          top: 30%;
+          left: 20%;
+          width: 60%;
+          height: 60%;
+          z-index: 2;
+        }
+      }
+
+      h2 {
+        color: $color-main;
+        margin: 0;
+        padding-bottom: 10%;
+        padding-right: 3%;
+      }
+
+      .schedule__text {
+        top: 10%;
+        right: 20%;
+        color: $color-main;
+      }
+    }
+
+    &.recreation {
+      .bg {
+        &__img--1 {
+          background-image: url(../img/schedule/recreation.PNG);
+          width: 50%;
+          height: 100%;
+          position: absolute;
+          background-size: cover;
+          background-position: center;
+
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6); /* ここで黒いフィルター */
+            z-index: 1;
+          }
+        }
+
+        &__img--2 {
+          background-image: url(../img/schedule/recreation2.PNG);
+          width: 50%;
+          height: 100%;
+          position: absolute;
+          right: 0;
+          background-size: cover;
+          background-position: center;
+
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6); /* ここで黒いフィルター */
+            z-index: 1;
+          }
+        }
+      }
+
+      .schedule__text {
+        color: $color-main;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
+    }
+
+    &.closing {
+      .schedule__text {
+        color: $color-blue;
+        top: 35%;
+        left: 15%;
+      }
+
+      .img__wrap {
+
+        img {
+          top: 20%;
+          right: 5%;
+          width: 60%;
+          height: 70%;
+        }
+      }
+    }
+
+    &.party {
+      .schedule__text {
+        color: $color-blue;
+        top: 35%;
+        left: 10%;
+      }
+
+      .party1 {
+        right: 0;
+        width: 50%;
+        height: 100%;
+      }
+
+      .party2 {
+        width: 30%;
+        right: 40%;
+        bottom: 10%;
+      }
+    }
+  }
+
+  .closing__text {
+    text-align: center;
+    font-size: 4.0rem; 
+    margin-top: 100px; 
+  }
+}
+
+// Clock Styles
+.clock {
+  position: fixed;
+  top: 30px; 
+  left: 30px;
+  width: 100px; 
+  height: 100px;
+  border: 5px solid #2B4473;
+  border-radius: 50%;
+  background-color: #EDE6D7;
+  z-index: 999;
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  background: #D04D17;
+  border-radius: 4px; 
+  transition: transform 0.2s ease-out;
+}
+
+.hour-hand {
+  width: 4px; 
+  height: 30px; 
+}
+
+.minute-hand {
+  width: 3px; 
+  height: 40px; 
+}
+
+// Fade In Animations
+.fadein {
+  opacity: 0;
+  transform: translate(0, 0);
+  transition: all 0.8s ease-out;
+}
+
+// Initial States for Fade In
+.fadein-left {
+  transform: translateX(-50px);
+}
+
+.fadein-right {
+  transform: translateX(50px);
+}
+
+.fadein-up {
+  transform: translateY(-50px);
+}
+
+.fadein-down {
+  transform: translateY(50px);
+}
+
+// Fade In Trigger
+.fadein.inview {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+// Global Background
+.global-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background 0.5s ease;
+}
+
+// Stars Effect
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 40vh;
+  background: url('../img/stars2.png') repeat;
+  background-size: contain;
+  opacity: 0;
+  z-index: -5;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+
+
+/*===========================
+ページ遷移時
+===========================*/
+/* ページめくりトランジション */
+.page-turn-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.page-turn-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 1s ease; /* 遅く */
+}
+
+.page-turn-page {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #EDE6D7; /* ページの背景色 */
+  box-shadow: 
+    -10px 0 20px rgba(0,0,0,0.1), 
+    -15px 0 50px rgba(0,0,0,0.05);
+  transform-origin: right center;
+  transform: 
+    perspective(2000px) 
+    rotateY(180deg) 
+    translateX(50%);
+  opacity: 0;
+  transition: 
+    transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), /* より長く、なめらかに */
+    right 1.2s cubic-bezier(0.25, 0.1, 0.25, 1),
+    opacity 1s ease; /* 遅く */
+}
+
+.page-turn-container.page-turning .page-turn-overlay {
+  opacity: 1;
+}
+
+.page-turn-container.page-turning .page-turn-page {
+  right: 0;
+  opacity: 1;
+  transform: 
+    perspective(2000px) 
+    rotateY(0deg) 
+    translateX(0);
+}
+

@@ -1,0 +1,524 @@
+@use './common' as *;
+
+
+main{
+
+  /*全て共通：モーダルのボタンの色を変更したい場合*/
+.modaal-close:after, 
+.modaal-close:before{
+	background:#ccc;	
+}
+
+.modaal-close:focus:after,
+.modaal-close:focus:before,
+.modaal-close:hover:after,
+.modaal-close:hover:before{
+	background:#666;
+}
+
+    .gallery__fv {
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 160px;
+        // その他のスタイル
+      }
+
+    .gallery__grid{
+        width: 100%;
+        height: auto;
+        padding-inline: 6%;
+        padding-block: 10%;
+
+        .gallery__grid-wrapper{
+            display: grid;
+            gap: 10px;
+            grid-template-rows: repeat(12, 1fr);
+            grid-template-columns: repeat(9, 1fr);
+        img{
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item01{
+            grid-row: 1 / 5;
+            grid-column: 1 / 3;
+            
+        }
+        .item02{
+            grid-row: 1 / 4;
+            grid-column: 3 / 7;
+        }
+        .item03{ 
+            grid-row: 1 / 4;
+            grid-column: 7 / 10;
+        }
+        .item04{
+            grid-column: 3 / 4;
+            grid-row: 4 / 5;
+        }
+        .item05{
+            grid-column: 4 / 6;
+            grid-row: 4 / 6;
+        }
+        .item06{
+            grid-column: 6/9;
+            grid-row: 4/6;
+        }
+        .item07{
+            grid-column: 9/10;
+            grid-row: 4/6;
+        }
+        .item08{
+            grid-column: 7/10;
+            grid-row: 6/9;
+        }
+        .item09{
+            grid-column: 4/7;
+            grid-row: 6/10;
+        }
+        .item10{
+            grid-column: 7/10;
+            grid-row: 9/11;
+        }
+        .item11{
+            grid-column: 6/10;
+            grid-row: 11/13;
+        }
+        .item12{
+            grid-column: 6/7;
+            grid-row: 10/11;
+        }
+        .item13{
+            grid-column: 4/6;
+            grid-row: 10/12;
+        }
+        .item14{
+            grid-column: 4/6;
+            grid-row: 12/13;
+        }
+        .item15{
+            grid-column: 1/4;
+            grid-row: 11/13;
+        }
+        .item16{
+            grid-column: 3/4;
+            grid-row: 10/11;
+        }
+        .item17{
+            grid-column: 1/3;
+            grid-row: 10/11;
+        }
+        .item18{
+            grid-column: 3/4;
+            grid-row: 8/10;
+        }
+        .item19{
+            grid-column: 1/3;
+            grid-row: 8/10;
+        }
+        .item20{
+            grid-column: 1/4;
+            grid-row: 5/8;
+        }
+      }
+    }
+    .gallery__grid-wrapper img {
+      height: 100%;
+      object-fit: cover;
+      
+      /* Improved animation properties */
+      transition: transform 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+      transform-style: preserve-3d;
+      backface-visibility: visible;
+      
+      &:hover {
+        transform: rotateY(-180deg);
+      }
+    }
+
+
+
+    // 変数の定義
+$color-main: #D04D17; 
+$font-kaku: "Zen Kaku Gothic New", sans-serif;
+$font-mincho: "Zen Old Mincho", serif;
+$font-emblema: "Emblema One", system-ui;
+$animation-curve: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+// ミックスイン
+@mixin vertical-writing {
+  writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+}
+
+// メインスタイル
+.voice {
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 2%;
+  box-sizing: border-box;
+  
+  h2 {
+    text-align: center;
+    font-size: 9.6rem;
+    font-family: $font-emblema;
+    color: $color-main;
+    margin-bottom: 60px;
+  }
+  
+  &__wrapper {
+    width: 100%;
+    height: 800px;
+    position: relative;
+    margin-bottom: 160px;
+    overflow: hidden;
+  }
+  
+  // 画像スタイル
+  &__img {
+    img {
+      width: 470px;
+    }
+  }
+  
+  // 個別のボイススタイル
+  &__yuuki p {
+    font-size: 3.6rem;
+    font-weight: bold;
+    font-family: $font-kaku;
+  }
+  
+  &__motibette p {
+    font-size: 3.6rem;
+    font-family: $font-mincho;
+    @include vertical-writing;
+  }
+  
+  &__warai p {
+    font-size: 1.6rem;
+    font-family: $font-mincho;
+    @include vertical-writing;
+    letter-spacing: 8px;
+  }
+  
+  &__hanasu p {
+    font-size: 1.6rem;
+  }
+  
+  &__motibebaku p {
+    font-size: 4.8rem;
+    font-family: $font-kaku;
+    font-weight: bold;
+  }
+  
+  &__kaeri p {
+    font-size: 1.4rem;
+  }
+  
+  &__ano p {
+    font-size: 3.2rem;
+  }
+  
+  &__mataikitai p {
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+  
+  &__tadaima p {
+    font-size: 4.8rem;
+    font-family: $font-kaku;
+  }
+  
+  &__konnnani p {
+    font-size: 2.4rem;
+    font-family: $font-mincho;
+    @include vertical-writing;
+    letter-spacing: 3px;
+    line-height: 2.5;
+  }
+  
+  &__tanosiiha p {
+    font-size: 3.6rem;
+    font-weight: bold;
+    font-family: $font-kaku;
+    @include vertical-writing;
+  }
+  
+  &__hatusannka p {
+    font-size: 1.6rem;
+    @include vertical-writing;
+  }
+  
+  &__ibasyoa p {
+    font-size: 3.6rem;
+  }
+  
+  &__kinntyou p {
+    font-size: 1.6rem;
+  }
+  
+  &__mata p {
+    font-size: 2.0rem;
+    @include vertical-writing;
+    letter-spacing: 20px;
+    line-height: 2;
+  }
+  
+  &__sns p {
+    font-size: 1.4rem;
+    @include vertical-writing;
+    letter-spacing: 4px;
+    line-height: 2;
+  }
+}
+
+// 各ボイス要素の基本スタイル
+.voice1 {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  transition: transform 0.4s $animation-curve, opacity 0.3s;
+  span{
+    color: #D04D17;
+  }
+}
+
+// アニメーションスタイル
+.animate {
+  animation-name: popAndFloat;
+  animation-duration: 6s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+@keyframes popAndFloat {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+    visibility: hidden;
+  }
+  5% {
+    transform: scale(1.2);
+    opacity: 1;
+    visibility: visible;
+  }
+  15% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.voice__img.voice1.animate-img {
+  animation-name: popAndStay;
+  animation-duration: 2s;
+  animation-delay: 4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+@keyframes popAndStay {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+    visibility: hidden;
+  }
+  20% {
+    transform: scale(1.2);
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+      
+      
+    
+ /*==================================================
+スタート時は要素自体を透過0にするためのopacity:0;を指定する
+===================================*/
+
+.voice1{
+	opacity: 0;
+}
+
+/*==================================================
+動かしたい動き（今回は” ふわっ” を採用）
+===================================*/
+
+
+.fadeUp {
+    animation: fadeUpAnime 0.6s ease-out forwards;
+  }
+  
+  @keyframes fadeUpAnime {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+
+
+
+$transition-standard: 1.2s ease;
+$transition-out: 2s ease;
+$text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+$overlay-bg: rgba(0, 0, 0, 0.3);
+$white: #fff;
+$dot-bg: rgba(255, 255, 255, 0.5);
+
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin position-absolute-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* // Story Container */
+.story-container {
+  position: relative;
+  width: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  height: auto;
+  
+  /* // Sections */
+  .section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center;
+    opacity: 0.7;
+    transition: opacity $transition-standard, transform $transition-standard;
+    
+    &.active {
+      opacity: 1;
+      
+      .section-title,
+      .section-description {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* // Section Background */
+    .section-bg {
+      @include position-absolute-full;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: 1;
+      
+      img {
+        display: none;
+      }
+    }
+    
+   
+    .section-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      @include flex-center;
+      flex-direction: column;
+      text-align: center;
+      padding: 0 2rem;
+      color: $white;
+      text-shadow: $text-shadow;
+      background-color: $overlay-bg;
+    }
+    
+    
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity $transition-standard, transform $transition-standard;
+    }
+    
+    
+    .section-description {
+      font-size: 1.6rem;
+      max-width: 800px;
+      line-height: 1.8;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity $transition-standard 0.2s, transform $transition-standard 0.2s;
+    }
+  }
+  
+  
+  #section1 .section-bg {
+    background-image: url('../img/story-1.png');
+  }
+  
+  #section2 .section-bg {
+    background-image: url('../img/story-2.png');
+  }
+  
+  #section3 .section-bg {
+    background-image: url('../img/story-3.png');
+  }
+  
+  #section4 .section-bg {
+    background-image: url('../img/story-4.png');
+  }
+}
+
+
+.story-nav-dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
+}
+
+.story-nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $dot-bg;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &.active {
+    background-color: $white;
+    transform: scale(1.3);
+  }
+}

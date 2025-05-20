@@ -1,0 +1,444 @@
+@use './common' as *;
+
+@mixin fv-position {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@mixin main__content--card {
+    position: relative;
+    z-index: 3;
+    background-color: $color-base;
+}
+
+/*=================================================
+// ローディング画面
+===================================================*/
+
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color-base;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1.2s ease, visibility 1.2s;
+  }
+  
+  .loading-container.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .loading-container.fade-out {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .loading-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .start-message {
+    margin-top: 30px;
+    opacity: 0.7;
+    font-size: 16px;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* ローダーテキスト */
+  .loader-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .letter {
+    color: $color-brown;
+    font-size: 40px;
+    font-weight: bold;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin: 0 2px;
+  }
+  
+  /* アニメーションが有効になったときのスタイル */
+  .animated .letter {
+    animation: floating 2s ease-in-out infinite;
+  }
+  
+  .animated .letter:nth-child(1) { animation-delay: 0s; }
+  .animated .letter:nth-child(2) { animation-delay: 0.1s; }
+  .animated .letter:nth-child(3) { animation-delay: 0.2s; }
+  .animated .letter:nth-child(4) { animation-delay: 0.3s; }
+  .animated .letter:nth-child(5) { animation-delay: 0.4s; }
+  .animated .letter:nth-child(6) { animation-delay: 0.5s; }
+  .animated .letter:nth-child(7) { animation-delay: 0.6s; }
+  
+  /* ホバー効果 */
+  .loader-text:not(.animated) .letter:hover {
+    transform: translateY(-5px);
+  }
+  
+  @keyframes floating {
+    0%, 100% {
+      transform: translateY(0) rotate(0);
+    }
+    25% {
+      transform: translateY(-20px) rotate(10deg);
+    }
+    50% {
+      transform: translateY(0) rotate(0);
+    }
+    75% {
+      transform: translateY(20px) rotate(-10deg);
+    }
+  }
+  
+  /* メインコンテンツ */
+  .main-content {
+    opacity: 0;
+    transition: opacity 1.5s ease;
+  }
+  
+  .main-content.visible {
+    opacity: 1;
+  }
+  
+  /* アニメーション */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
+
+
+
+/*=================================================
+// ファーストビュー
+===================================================*/
+
+
+.fv__wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* 背景だから一番後ろ */
+    overflow: hidden;
+
+    .fv__wrapper--image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(0.5);
+        will-change: transform;
+    }
+
+}
+
+.fv {   
+    position: relative;
+    z-index: 1; /* 背景の上に載せる */
+    height: 100vh; /* ファーストビュー */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    // color: #fff;
+
+
+
+/*=================================================
+// 文字の動き
+===================================================*/
+    
+    .fv__box {
+        width: 100%;
+        white-space: nowrap;
+        
+        position: absolute;
+        @include fv-position;
+        
+        .fv__title {
+            font-family: $font-en;
+            font-size: 12.8rem;
+            animation: ticker 13s linear infinite;
+        }
+        .fv__date {
+            font-family: $font-en;
+            font-size: 3.6rem;
+            animation: ticker 11.5s linear infinite;
+        }
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        .fv__title, .fv__date {
+            color: $color-main;
+
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center center;
+
+            &.scatter {
+                opacity: 0;
+                transform: scale(1.5) rotate(10deg);
+                filter: blur(10px);
+            }
+            
+        }
+    }
+}
+
+
+/*=================================================
+// 切り替わり
+===================================================*/
+
+.fv__copy {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+    opacity: 0; // 初期状態は非表示
+    transform: translateY(50px); // 少し下から
+    transition: all 2.0s ease-out;
+    
+    &.is-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    &.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    &.is-absolute {
+        position: absolute;
+        top: 100vh;
+    }
+    .fv__copy--title {
+        font-family: $font-ja;
+        font-size: 4.8rem;
+        letter-spacing: 1rem;
+        margin-bottom: 20px;
+    }
+    .fv__copy--text {
+        font-family: $font-ja;
+        font-size: 2.0rem;
+        letter-spacing: 0.5rem
+    }
+}
+
+
+
+/*=================================================
+// ギャラリー
+===================================================*/
+
+
+.main__content {
+    @include main__content--card();
+    margin-top: 100vh; // fv__copyの高さ分空ける
+
+    .gallery__top--title {
+        font-family: $font-en;
+        font-size: 6.4rem;
+        color: $color-main;
+        margin-bottom: 100px;
+        padding-top: 100px;
+        padding-left: 50px;
+
+    }
+    
+    .gallery__slider--first {
+        margin-bottom: 10px;
+    }
+
+
+
+    .swiper-wrapper {
+        .swiper-slide {
+            width: 30%;
+            position: relative;
+            .mask {
+                position:relative;/*背景色の基点となる位置を定義*/
+                display: block;
+                line-height: 0;/*行の高さを0にする*/
+                overflow: hidden;/*拡大してはみ出る要素を隠す*/
+                
+                &:hover::before {
+                    opacity: 0.5;
+                    transform: scale(1);
+
+                    
+                }
+                    &::before {
+                        content:"";
+                        position: absolute;
+                        z-index: 2;
+                        left:0;
+                        top:0;
+                        opacity:0.5;/*透過0*/
+                        transition: .3s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+                        transform: scale(0);
+                        background:#333;/*背景色*/
+                        width:100%;
+                        height: 100%;
+                    }
+            }
+
+            .cap {
+                position: absolute;
+                opacity:0;/*透過0*/
+                transition: .5s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+                z-index:3;/*テキストを前面に出す*/
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);/*テキストの位置中央指定*/
+                color: #fff;/*テキストの色を変えたい場合はここを修正*/
+                line-height: 1.5;/*行の高さを1.5にする*/
+                text-align: center;
+                font-size: 2rem;
+                font-family: $font-ja;
+            }
+
+            &:hover span.cap {
+                opacity: 1;
+            }
+
+            
+
+        }
+    }
+.gallery__btn--box {
+    display: flex;
+    justify-content: center;
+
+    .button-container {
+        margin-top: 50px;
+    }
+}
+
+
+
+    
+}
+
+
+
+/*=================================================
+// ナビゲーション
+===================================================*/
+.top__nav {
+    display: flex;
+    padding: 10%;
+    h3 {
+        font-family: $font-en;
+        font-size: 3.2rem;
+        margin-bottom: 10px;
+    }
+    p {
+        font-family: $font-ja;
+        font-size: 1.8rem;
+    }
+    .top__nav--daily {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 4%;
+        margin-right: 50px;
+        background: linear-gradient(to bottom, $color-main, $color-base );
+        color: $color-base;
+        border-radius: 30px;
+        box-shadow: 5px 5px 8px gray;
+
+        .top__nav--dailyimg {
+            clip-path: polygon(0% 0%, 100% 33%, 100% 100%, 0% 100%,);
+            border-radius: 0px 0px 30px 30px;
+        }
+    }
+    .top__nav--box {
+        .top__nav--voice {
+            display: flex;
+            justify-content: space-between;
+            padding: 4%;
+            margin-bottom: 50px;
+            background: linear-gradient(to bottom, $color-blue, $color-base );
+            color: $color-base;
+            border-radius: 30px;
+            box-shadow: 5px 5px 8px gray;
+
+
+            .top__nav--voiceimg {
+                width: 50%;
+                clip-path: polygon(0% 40%, 100% 0%, 100% 100%, 0% 100%,);
+                border-radius: 0px 0px 30px 10px;
+            }
+
+            .voice-box {
+                width: 45%;
+            }
+
+        }
+        .top__nav--next {
+            border-radius: 30px;
+            box-shadow: 5px 5px 8px gray;
+            background: linear-gradient(to bottom, $color-green, $color-base );
+            color: $color-base;
+
+            .next-box {
+                display: flex;
+                justify-content: space-between;
+                padding: 4%;
+            }
+
+            .top__nav--nextimg {
+                width: 50%;
+                clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%,);
+                border-radius: 0 30px 30px 0;
+            }
+
+            .next-box--inner {
+                width: 45%
+            }
+            
+
+        }
+    }
+    
+}
+
+
+/*=================================================
+// フッター
+===================================================*/
+
+
+.footer__main--content {
+    @include main__content--card();
+  }

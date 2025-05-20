@@ -1,0 +1,155 @@
+// 共通項目
+
+@mixin container-card {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+
+$color-main:#D04D17;
+$color-base:#EDE6D7;
+$color-blue:#2B4473;
+$color-green:#3C583F;
+$color-brown:#504337;
+$font-en:"Emblema One", system-ui;
+$font-ja:"Zen Kaku Gothic New", sans-serif;
+
+
+
+// @include container-card();   
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: $color-base;
+    overflow-x: hidden;
+    // opacity: 0;
+    // transition: opacity 1s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+p {
+    font-family: $font-ja;
+    font-size: 1.6rem;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/*===========================
+ヘッダー
+===========================*/
+
+.header {
+    position: fixed;
+    z-index: 100;
+    top: 10px;
+    right: 20px;
+
+    &__nav {
+      display: flex;
+      justify-content: right;
+      gap: 50px;
+  
+      li {
+        a {
+          font-family: $font-en;
+          font-size: 3.2rem;
+          color: $color-blue;
+          transition: 0.6s;
+  
+          &:hover {
+            color: $color-base;
+            text-shadow: 
+              2px 2px 0 $color-blue,
+              2px -2px 0 $color-blue,
+              -2px 2px 0 $color-blue,
+              -2px -2px 0 $color-blue,
+            ;
+          }
+        }
+      }
+    }
+  }
+
+/*===========================
+フッター
+===========================*/
+.footer {
+
+    &__top {
+      background-color: $color-brown;
+      padding: 10px;
+  
+      h2 {
+        font-family: $font-en;
+        color: $color-base;
+        font-size: 9.6rem;
+        text-align: center;
+      }
+    }
+  
+    &__media {
+      height: 300px;
+  
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  
+    &__bottom {
+      background-color: $color-brown;
+      padding: 40px;
+  
+      &-nav {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+  
+        li {
+          a {
+            font-family: $font-en;
+            font-size: 3.2rem;
+            color: $color-base;
+            transition: 0.3s;
+  
+            &:hover {
+              color: $color-base;
+              text-shadow: 
+                2px 2px 0 $color-main,
+                2px -2px 0 $color-main,
+                -2px 2px 0 $color-main,
+                -2px -2px 0 $color-main,
+              ;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+// ナビゲーショントップページ以外
+.nav__only {
+    width: 70%;
+    margin: 0 auto;
+}

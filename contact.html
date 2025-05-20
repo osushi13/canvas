@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pronavi offline meetup!! ~~</title>
+    <meta name="description" content="悩んでいるその時間で、
+    誰かがもう一歩を踏み出しています。
+    今日、その誰かになってみませんか？
+    その勇気が、素晴らしい出会いをもたらします。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="#">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Emblema+One&family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="CSS/style.css.map">
+</head>
+
+<body>
+  <header class="header">
+    <ul class="header__nav">
+        <li><a href="index.html" class="nav-link" >Top</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="schedule.html" class="nav-link">Schedule</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <section class="next-event">
+      <div class="section__title">
+        <h2>Next Event</h2>
+        <p>次回のオフ会について</p>
+      </div>
+
+      <div class="next-event__content">
+        <dl class="next-event__content--text">
+          <div class="dl-wrap">
+            <dt>開催日：</dt>
+            <dd>2025年6月下旬〜7月予定</dd>
+          </div>
+          <div class="dl-wrap">
+            <dt>開催場所：</dt>
+            <dd>名古屋</dd>
+          </div>
+          <div class="dl-wrap">
+            <dt>内容：</dt>
+            <dd>熱量を直接感じられる会</dd>
+          </div>
+          <div class="dl-wrap">
+            <dt>参加方法：</dt>
+            <dd>Instagram告知</dd>
+          </div>
+        </dl>
+        <div class="next-event__img-wrap">
+          <img src="img/japan.png" alt="" class="next-event__content--img">
+          <img src="img/pin.png" alt="名古屋ピン" class="pin" id="nagoya-pin">
+        </div>
+      </div>
+    </section>
+
+    <div class="btn-wrapper">
+      <div class="button-container btn-right">
+        <a class="c-switch-link -blue" href="https://www.instagram.com/iruka.freelance/" target="_blank" data-button-type="blue">
+          <span class="c-switch-link__circle">
+            <span class="c-switch-link__circle-icon">
+              <svg viewBox="0 0 46 38">
+                <path d="M45.118,17.219L27.881,0.782c-1.049-1.049-2.747-1.049-3.796,0c-1.049,1.049-1.049,2.747,0,3.796
+                L37.792,18.3H2.75C1.229,18.3,0,19.529,0,21.05c0,1.521,1.229,2.75,2.75,2.75h35.042L24.085,37.507
+                c-1.049,1.049-1.049,2.747,0,3.796C24.61,41.829,25.299,42,25.987,42s1.377-0.171,1.902-0.697l17.229-16.437
+                C46.167,23.817,46.167,18.268,45.118,17.219z"></path>
+              </svg>
+            </span>
+          </span>
+          <span class="u-d-block u-width-full">
+            <span class="c-switch-link__label">
+              <span>いるかのInstagram</span>
+              <span>いるかのInstagram</span>
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <div class="button-container">
+        <a class="c-switch-link -green" href="https://www.instagram.com/kakashi.programming.lab/" target="_blank" data-button-type="green">
+          <span class="c-switch-link__circle">
+            <span class="c-switch-link__circle-icon">
+              <svg viewBox="0 0 46 38">
+                <path d="M45.118,17.219L27.881,0.782c-1.049-1.049-2.747-1.049-3.796,0c-1.049,1.049-1.049,2.747,0,3.796
+                L37.792,18.3H2.75C1.229,18.3,0,19.529,0,21.05c0,1.521,1.229,2.75,2.75,2.75h35.042L24.085,37.507
+                c-1.049,1.049-1.049,2.747,0,3.796C24.61,41.829,25.299,42,25.987,42s1.377-0.171,1.902-0.697l17.229-16.437
+                C46.167,23.817,46.167,18.268,45.118,17.219z"></path>
+              </svg>
+            </span>
+          </span>
+          <span class="u-d-block u-width-full">
+            <span class="c-switch-link__label">
+              <span>かかしのInstagram</span>
+              <span>かかしのInstagram</span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+
+    <section class="contact">
+      <h3 class="contact__title">Contact</h3>
+      <form>
+        <div class="contact__wrap">
+          <label for="name">名前</label>
+          <input type="text" name="name" placeholder="ちーむきゃんばす">
+        </div>
+        <div class="contact__wrap">
+          <label for="name">メールアドレス</label>
+          <input type="email" name="mail" placeholder="canvas@example.com">
+        </div>
+        <div class="contact__wrap">
+          <label for="name">お問い合わせ内容</label>
+          <textarea name="contact-content" rows="10" placeholder="楽しそうな会だなと思いました。ぜひオフ会に参加したいです！"></textarea>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="check">
+          <p>お問い合わせには<span>プライバシーポリシー</span>への同意が必要です。</p>
+        </div>
+
+        <div class="button-container btn-right submit">
+          <a class="c-switch-link -default" href="#" data-button-type="default" id="form-submit-button">
+            <span class="c-switch-link__circle">
+              <span class="c-switch-link__circle-icon">
+                <svg viewBox="0 0 46 38">
+                  <path d="M45.118,17.219L27.881,0.782c-1.049-1.049-2.747-1.049-3.796,0c-1.049,1.049-1.049,2.747,0,3.796
+                  L37.792,18.3H2.75C1.229,18.3,0,19.529,0,21.05c0,1.521,1.229,2.75,2.75,2.75h35.042L24.085,37.507
+                  c-1.049,1.049-1.049,2.747,0,3.796C24.61,41.829,25.299,42,25.987,42s1.377-0.171,1.902-0.697l17.229-16.437
+                  C46.167,23.817,46.167,18.268,45.118,17.219z"></path>
+                </svg>
+              </span>
+            </span>
+            <span class="u-d-block u-width-full">
+              <span class="c-switch-link__label">
+                <span>送信する</span>
+                <span>送信する</span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </form>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <h2>Let's take a step!!</h2>
+    </div>
+    <div class="footer__media">
+      <img src="img/footer.png" alt="footer-img">
+    </div>
+    <div class="footer__bottom">
+      <ul class="footer__bottom-nav">
+        <li><a href="index.html">Top</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <div id="form-complete-modal" class="form-complete-modal">
+    <div class="form-complete-modal__content">
+      <p>ご清聴ありがとうございました😊</p>
+      <button class="form-complete-modal__close">閉じる</button>
+    </div>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script src="js/common.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+
+</html>
